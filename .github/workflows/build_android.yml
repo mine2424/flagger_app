@@ -25,7 +25,6 @@ jobs:
           cache: true
       - run: flutter pub get
       - run: flutter test
-      - run: flutter build apk
       - run: flutter build appbundle
       - name: artifact upload
         uses: actions/upload-artifact@v2.2.0
