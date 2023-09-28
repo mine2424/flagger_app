@@ -10,10 +10,9 @@ this is flutter_template
 # if you don't have plugins
 asdf plugin add flutter
 asdf plugin add dart
-asdf plugin add bundler
-asdf plugin add cocoapods
 
 asdf install
+make setup
 ```
 
 **install xcodes**

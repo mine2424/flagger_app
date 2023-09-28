@@ -3,18 +3,18 @@ FVM = fvm flutter
 .PHONY: setup
 setup:
 	flutter clean
-	make build_runner
+	make gen
 
 .PHONY: pub_get
 pub_get:
 	flutter pub get
 
 .PHONY: pub_upgrade
-pub_get:
+pub_upgrade:
 	flutter pub upgrade
 
-.PHONY: build_runner
-build_runner:
+.PHONY: gen
+gen:
 	make pub_get
 	flutter pub run build_runner clean
 	flutter pub run build_runner build --delete-conflicting-outputs
@@ -32,11 +32,11 @@ clean:
 
 .PHONY: clean_pod
 clean_pod:
+	rm -Rf ios/Podfile.lock
 	rm -Rf ios/Pods
 	rm -Rf ios/.symlinks
 	rm -Rf ios/Flutter/Flutter.podspec
-	rm ios/Podfile
-	pod repo update
+	pod install --repo-update
 
 .PHONY: format
 format:
