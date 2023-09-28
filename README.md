@@ -7,6 +7,12 @@ this is flutter_template
 **install flutter**
 
 ```bash
+# if you don't have plugins
+asdf plugin add flutter
+asdf plugin add dart
+asdf plugin add bundler
+asdf plugin add cocoapods
+
 asdf install
 ```
 
