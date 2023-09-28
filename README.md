@@ -11,6 +11,7 @@ asdf install
 ```
 
 **install xcodes**
+
 xcodes とは、Xcode のバージョン管理ツールです。
 
 ```bash
@@ -63,9 +64,9 @@ make format
 │   ├── presentation/ (UI 層)
 │   │   ├── component/ (全ての screen で使用するコンポーネント)
 │   │   ├── screen/
-│   │   │ ├── xxx/
-│   │   │ │ ├── component/
-│   │   │   │ └── xxx_screen.dart
+│   │   └──── xxx/
+│   │         └── component/
+│   │             └── xxx_screen.dart
 │   ├── route
 │   │   └── auto_route.dart
 │   ├── hooks
@@ -74,12 +75,11 @@ make format
 │   │ └── xxx_use_case.dart
 │   ├── theme/
 │   │ └── xxx.dart
-│   ├── main.dart
+│   └── main.dart
 ├── pubspec.lock
 ├── pubspec.yaml
 ├── DOCUMENT.md
 └── README.md
-
 ```
 
 # 実装方針
