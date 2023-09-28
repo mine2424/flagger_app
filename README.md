@@ -10,6 +10,14 @@ this is flutter_template
 asdf install
 ```
 
+**install xcodes**
+xcodes とは、Xcode のバージョン管理ツールです。
+
+```bash
+brew install xcodesorg/made/xcodes
+xcodes install
+```
+
 **install packages**
 
 ```bash
