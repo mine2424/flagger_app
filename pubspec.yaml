@@ -13,6 +13,9 @@ dependencies:
   # Supabase
   supabase_flutter: ^1.10.19
 
+  # Env
+  flutter_dotenv: ^5.1.0
+
   # State Management
   flutter_hooks: ^0.20.1
   hooks_riverpod: ^2.4.1
