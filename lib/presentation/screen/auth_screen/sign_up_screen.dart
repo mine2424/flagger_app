@@ -9,6 +9,7 @@ class SignUpScreen extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    //controller系とかuseStateに入れた方がいい?
     final emailController = TextEditingController();
     final passwordController = TextEditingController();
 
@@ -20,6 +21,7 @@ class SignUpScreen extends HookConsumerWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              //Gap効いてない気がする...
               const Gap(2),
               const Text(
                 '新規登録',
@@ -50,6 +52,7 @@ class SignUpScreen extends HookConsumerWidget {
               SizedBox(
                 height: 64,
                 width: 320,
+                //全体のコンポーネントにボタン作ってそれ使う
                 child: ElevatedButton(
                   onPressed: () async {
                     print(emailController);
