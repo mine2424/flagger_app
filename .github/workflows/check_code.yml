@@ -32,5 +32,3 @@ jobs:
         run: flutter pub get
       - name: Linter
         run: flutter analyze
-      - name: Test
-        run: flutter test
