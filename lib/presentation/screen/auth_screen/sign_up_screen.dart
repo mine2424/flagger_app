@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:oprol_template/presentation/screen/auth_screen/auth_screen_component/text_filed.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:oprol_template/presentation/component/custom_text_filed.dart';
+import 'package:oprol_template/use_case/auth_use_case.dart';
 
 class SignUpScreen extends HookConsumerWidget {
   const SignUpScreen({super.key});
@@ -34,14 +34,15 @@ class SignUpScreen extends HookConsumerWidget {
                 const Gap(2),
                 Padding(
                   padding: const EdgeInsets.only(top: 28),
-                  child: TextFieldComponent(
+                  child: CustomTextField(
                     controller: emailController,
                     hintText: 'emailを入力してください',
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 28),
-                  child: TextFieldComponent(
+                  child: CustomTextField(
+                    obscureText: true,
                     controller: passwordController,
                     hintText: 'passwordを入力してください',
                   ),
@@ -50,16 +51,16 @@ class SignUpScreen extends HookConsumerWidget {
                   alignment: Alignment.centerRight,
                   child: Text('8文字以上12文字以下の半角英数字'),
                 ),
-                const SizedBox(
-                  height: 30,
-                ),
+                // const SizedBox(height: 30),
+                const Gap(20),
                 SizedBox(
                   height: 64,
                   width: 320,
                   //全体のコンポーネントにボタン作ってそれ使う
                   child: ElevatedButton(
                     onPressed: () async {
-                      await signUp(
+                      await AuthUseCase.signUp(
+                        ref: ref,
                         email: emailController.text,
                         password: passwordController.text,
                       );
@@ -92,20 +93,5 @@ class SignUpScreen extends HookConsumerWidget {
         ],
       ),
     );
-  }
-
-  //こいつの置く場所と書き方わからん
-  //return受け取る系はriverpod_generatorでかけるけど
-  //voidはどうすればいい?generatorでnotifier作ったら結局ややこしいしシンプルに関数書く感じでいいんかな
-  Future<void> signUp({required String email, required String password}) async {
-    final supabase = Supabase.instance.client;
-    try {
-      await supabase.auth.signUp(
-        email: email,
-        password: password,
-      );
-    } on AuthException {
-      return;
-    }
   }
 }

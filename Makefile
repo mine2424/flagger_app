@@ -16,11 +16,11 @@ pub_upgrade:
 .PHONY: gen
 gen:
 	make pub_get
-	flutter pub run build_runner clean
-	flutter pub run build_runner build --delete-conflicting-outputs
+	dart run build_runner clean
+	dart run build_runner build --delete-conflicting-outputs
 
-.PHONY: build_runner_watch
-build_runner:
+.PHONY: watch
+watch:
 	make pub_get
 	dart run build_runner watch
 
