@@ -61,7 +61,7 @@ class SignUpScreen extends HookConsumerWidget {
                   //全体のコンポーネントにボタン作ってそれ使う
                   child: ElevatedButton(
                     onPressed: () async {
-                      await AuthUseCase.signUp(
+                      await AuthUseCase.signUpWithEmailAndPassword(
                         ref: ref,
                         email: emailController.text,
                         password: passwordController.text,
