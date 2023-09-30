@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:oprol_template/presentation/screen/auth_screen/auth_screen_component/text_filed.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class SignUpScreen extends HookConsumerWidget {
   const SignUpScreen({super.key});
@@ -55,7 +56,7 @@ class SignUpScreen extends HookConsumerWidget {
                 //全体のコンポーネントにボタン作ってそれ使う
                 child: ElevatedButton(
                   onPressed: () async {
-                    print(emailController);
+                    await signUp(email: emailController.text, password: passwordController.text);
                   },
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all<Color>(
@@ -82,5 +83,20 @@ class SignUpScreen extends HookConsumerWidget {
         ),
       ]),
     );
+  }
+
+  //こいつの置く場所と書き方わからん
+  //return受け取る系はriverpod_generatorでかけるけど
+  //voidはどうすればいい?generatorでnotifier作ったら結局ややこしいしシンプルに関数書く感じでいいんかな
+  Future<void> signUp({required String email, required String password}) async {
+    final _supabase = Supabase.instance.client;
+      try {
+        await _supabase.auth.signUp(
+          email: email,
+          password: password,
+        );
+      } on AuthException catch (error) {
+        print(error.message);
+      }
   }
 }
