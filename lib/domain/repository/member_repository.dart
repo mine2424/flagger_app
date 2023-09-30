@@ -73,8 +73,8 @@ class MemberRepository {
           .from('answers')
           .select<supabase_flutter.PostgrestList>(
             'average_score, events ( event_date )',
-          )
-          .eq('member_id', 'e3f5b1e6-c1d8-45d0-b05f-12cad13072b4');
+          );
+      print(scoreData);
 
       return scoreData;
     } catch (e) {

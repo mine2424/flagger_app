@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:oprol_template/domain/entity/member.dart';
+import 'package:oprol_template/presentation/component/line_chat.dart';
 
 class OrganizationMemberScreen extends HookConsumerWidget {
   const OrganizationMemberScreen(this.allMemberState, {super.key});
@@ -23,8 +24,9 @@ class OrganizationMemberScreen extends HookConsumerWidget {
                   children: [
                     Container(
                       color: Colors.grey,
-                      height: 200,
-                      width: 200,
+                      height: 250,
+                      width: 250,
+                      child: LineChartComponent(),
                     ),
                     const Padding(
                       padding: EdgeInsets.all(8),
