@@ -2,10 +2,10 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'gen/colors.gen.dart';
+import 'package:oprol_template/gen/colors.gen.dart';
 
 ThemeData customTheme() {
-  ///TODO テーマ切り替える
+  // TODO(username): テーマ切り替える.
   final base = ThemeData.light();
   return base.copyWith(
     primaryColor: AppColor.secondColor,
