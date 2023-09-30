@@ -16,13 +16,13 @@ jobs:
     name: Check the source code
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
       - name: Create .env file
         run: |
           cat > assets/.env <<EOF
           VAR_URL=${{ secrets.VAR_URL }}
           VAR_ANONKEY=${{ secrets.VAR_ANONKEY }}
           EOF
-      - uses: actions/checkout@v3
       - uses: subosito/flutter-action@v2.3.0
         with:
           flutter-version: '3.13.6'
