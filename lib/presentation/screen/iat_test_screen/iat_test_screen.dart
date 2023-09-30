@@ -1,11 +1,15 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gap/gap.dart';
 
+import 'package:oprol_template/presentation/screen/iat_test_screen/iat_test_result_screen.dart';
+
 class IATTestScreen extends HookWidget {
-  const IATTestScreen({super.key});
+  IATTestScreen({super.key});
 
   static const questions = [
     '一日の終わりには、自分の仕事に満足していることが多いですか？',
@@ -18,46 +22,45 @@ class IATTestScreen extends HookWidget {
     '仕事のミスに対して、過度なプレッシャーを感じますか？',
     '仕事に対する自信はありますか？',
     '仕事の目標や期待値が明確ですか？',
-    '仕事の成果を適切に評価されていると感じますか？',
-    'ITエンジニアとしてのスキルアップの機会は十分ですか？',
-    '仕事における新しい技術やツールを学ぶ機会は十分にあると感じますか？',
-    '仕事以外での趣味やリラックスする時間は十分にありますか？',
-    '会社のカルチャーや価値観に合っていると感じますか？',
-    '職場では、あなたの意見や考えが尊重されていますか？',
-    '職場では、あなたが何か新しいことを提案することが歓迎されていると感じますか？',
+    '',
   ];
 
   static const double _baseWidth = 320;
   static const double _baseHeight = 640;
 
+  final stopWatch = Stopwatch()..start();
+
   @override
   Widget build(BuildContext context) {
-    final leftSideTextKey = GlobalKey();
-    final rightSideTextKey = GlobalKey();
+    final elapsedMilliseconds = useState<double>(0);
+    final currentPage = useState<int>(0);
+    final leftTextKeyList =
+        List.generate(questions.length, (index) => GlobalKey());
+    final rightTextKeyList =
+        List.generate(questions.length, (index) => GlobalKey());
 
-    final stopWatch = Stopwatch();
-
-    final elapsedSeconds = useState<double>(0);
-
-    final animationController = useAnimationController(
-      duration: const Duration(milliseconds: 500),
-    );
+    final carouselController = CarouselController();
 
     useEffect(
       () {
-        stopWatch.start();
         return stopWatch.reset;
       },
       const [],
     );
 
-    void evaluateOneIATQuestion(TapUpDetails details) {
+    void evaluateOneIATQuestion(
+      TapUpDetails details,
+      GlobalKey leftSideTextKey,
+      GlobalKey rightSideTextKey,
+    ) {
       // C: 秒数の計測
       stopWatch.stop();
 
       final elapsed = stopWatch.elapsed;
-      elapsedSeconds.value = elapsed.inSeconds.toDouble();
-      debugPrint('elapsedSeconds: ${elapsedSeconds.value}');
+      // ignore: lines_longer_than_80_chars
+      elapsedMilliseconds.value =
+          double.parse('${elapsed.inSeconds}.${elapsed.inMilliseconds}');
+      debugPrint('elapsedSeconds: ${elapsedMilliseconds.value}');
 
       // A: 回答の+,-の位置の評価（横軸のみ）
       final dx = details.localPosition.dx;
@@ -69,9 +72,10 @@ class IATTestScreen extends HookWidget {
       debugPrint('widthPosition: $widthPosition');
 
       // B: tapの位置の評価
-
-      final leftTextRenderBox = leftSideTextKey.currentContext!.findRenderObject()! as RenderBox;
-      final rightTextRenderBox = rightSideTextKey.currentContext!.findRenderObject()! as RenderBox;
+      final leftTextRenderBox =
+          leftSideTextKey.currentContext!.findRenderObject()! as RenderBox;
+      final rightTextRenderBox =
+          rightSideTextKey.currentContext!.findRenderObject()! as RenderBox;
 
       // widthの半分より左側を選択した場合は左側のテキストの座標を取得
       // 右側を選択した場合は右側のテキストの座標を取得
@@ -92,58 +96,95 @@ class IATTestScreen extends HookWidget {
       final fx = textPosition.dx;
       final fy = textPosition.dy;
 
-      final tapDistance = sqrt(pow(fx - regulatedDx, 2) + pow(fy - regulatedDy, 2));
+      final tapDistance =
+          sqrt(pow(fx - regulatedDx, 2) + pow(fy - regulatedDy, 2));
 
       debugPrint('tap distance: $tapDistance');
-
-      // 次の問題へアニメーションで遷移
-      animationController.forward(from: 0);
     }
 
     return Scaffold(
-      appBar: AppBar(title: const Text('IATテスト')),
       body: SizedBox(
         height: MediaQuery.sizeOf(context).height,
-        child: AnimatedBuilder(
-          animation: animationController,
-          builder: (_, __) {
-            return GestureDetector(
-              behavior: HitTestBehavior.opaque,
-              onTapUp: evaluateOneIATQuestion,
-              child: Column(
-                children: [
-                  const Gap(40),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 40),
-                    child: Text(
-                      questions[0],
-                      style: Theme.of(context).textTheme.titleLarge,
-                      textAlign: TextAlign.center,
+        child: GestureDetector(
+          behavior: HitTestBehavior.opaque,
+          onTapUp: (details) => evaluateOneIATQuestion(
+            details,
+            leftTextKeyList[currentPage.value],
+            rightTextKeyList[currentPage.value],
+          ),
+          child: CarouselSlider(
+            carouselController: carouselController,
+            options: CarouselOptions(
+              height: MediaQuery.sizeOf(context).height,
+              viewportFraction: 1,
+              autoPlay: true,
+              enableInfiniteScroll: false,
+              pauseAutoPlayInFiniteScroll: true,
+              scrollPhysics: const NeverScrollableScrollPhysics(),
+              autoPlayInterval: const Duration(seconds: 10),
+              onPageChanged: (index, reason) {
+                currentPage.value = index;
+
+                stopWatch.start();
+
+                if (index == questions.length - 1) {
+                  debugPrint('最後のページ');
+                  Navigator.of(context).push(
+                    MaterialPageRoute<void>(
+                      fullscreenDialog: true,
+                      builder: (context) {
+                        return const IATTestResultScreen();
+                      },
                     ),
-                  ),
-                  const Gap(60),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  );
+                }
+              },
+            ),
+            items: questions.map((value) {
+              final i = questions.indexOf(value);
+
+              return (i == questions.length - 1)
+                  ? const SizedBox()
+                  : Column(
                       children: [
-                        Text(
-                          'そう思わない',
-                          style: Theme.of(context).textTheme.titleLarge!.copyWith(fontWeight: FontWeight.bold),
-                          key: leftSideTextKey,
+                        const Gap(200),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 40),
+                          child: Text(
+                            questions[i],
+                            style: Theme.of(context).textTheme.titleLarge,
+                            textAlign: TextAlign.center,
+                          ),
                         ),
-                        Text(
-                          'そう思う',
-                          style: Theme.of(context).textTheme.titleLarge!.copyWith(fontWeight: FontWeight.bold),
-                          key: rightSideTextKey,
+                        const Gap(60),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 20),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'そう思わない',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .titleLarge!
+                                    .copyWith(fontWeight: FontWeight.bold),
+                                key: leftTextKeyList[i],
+                              ),
+                              Text(
+                                'そう思う',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .titleLarge!
+                                    .copyWith(fontWeight: FontWeight.bold),
+                                key: rightTextKeyList[i],
+                              ),
+                            ],
+                          ),
                         ),
                       ],
-                    ),
-                  ),
-                ],
-              ),
-            );
-          },
+                    );
+            }).toList(),
+          ),
         ),
       ),
     );

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import 'package:oprol_template/presentation/screen/auth_screen/sign_up_screen.dart';
 import 'package:oprol_template/presentation/screen/iat_test_screen/iat_test_screen.dart';
 import 'package:oprol_template/theme.dart';
 
@@ -15,7 +14,7 @@ class App extends HookConsumerWidget {
       debugShowCheckedModeBanner: false,
       title: 'beta',
       theme: customTheme(),
-      home: const IATTestScreen(),
+      home: IATTestScreen(),
     );
   }
 }

@@ -1,7 +1,5 @@
-// Flutter imports:
 import 'package:flutter/material.dart';
 
-// Project imports:
 import 'package:oprol_template/gen/colors.gen.dart';
 
 ThemeData customTheme() {
