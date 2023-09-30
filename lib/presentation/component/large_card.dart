@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class LargeCard extends StatelessWidget {
-  const LargeCard({super.key, required this.title});
+  const LargeCard({required this.title, super.key});
 
   final String title;
   @override
@@ -20,12 +20,12 @@ class LargeCard extends StatelessWidget {
         ),
         child: Column(
           children: [
-            Padding(
+            const Padding(
               padding: EdgeInsets.only(top: 12),
             ),
             const Text(
-              "今回の提出期限まであと",
-              style: const TextStyle(
+              '今回の提出期限まであと',
+              style: TextStyle(
                 fontSize: 16,
               ),
             ),

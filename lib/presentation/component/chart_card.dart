@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
+
 import 'package:fl_chart/fl_chart.dart';
+
 import 'package:oprol_template/gen/colors.gen.dart';
 
 class ChartCard extends StatelessWidget {
-  const ChartCard(
-      {super.key,
-      required this.ImprovementRate0,
-      required this.ImporvementRate1,
-      required this.ImprovementRate2});
+  const ChartCard({
+    required this.improvementRate0,
+    required this.imporvementRate1,
+    required this.improvementRate2,
+    super.key,
+  });
+
   // ２ヶ月前までの改善率を受け取る
 
-  final int ImprovementRate0;
-  final int ImporvementRate1;
-  final int ImprovementRate2;
+  final int improvementRate0;
+  final int imporvementRate1;
+  final int improvementRate2;
 
   @override
   Widget build(BuildContext context) {
@@ -36,29 +40,25 @@ class ChartCard extends StatelessWidget {
                 LineChartData(
                   lineBarsData: [
                     LineChartBarData(
-                      spots: const [
-                        FlSpot(0.0, 3),
-                        FlSpot(0.5, 3),
-                        FlSpot(1.0, 5),
-                        FlSpot(1.5, 1),
-                        FlSpot(2.0, 4),
-                        FlSpot(2.5, 7),
-                        FlSpot(3.0, 9),
+                      spots: [
+                        const FlSpot(0, 3),
+                        const FlSpot(0.5, 3),
+                        const FlSpot(1, 5),
+                        const FlSpot(1.5, 1),
+                        const FlSpot(2, 4),
+                        const FlSpot(2.5, 7),
+                        const FlSpot(3, 9),
                       ],
                       color: Colors.lightBlueAccent,
                       isCurved: true,
-                      dotData: FlDotData(
+                      dotData: const FlDotData(
                         show: false, // 座標のドット表示の有無
                       ),
                     ),
                   ],
                   titlesData: FlTitlesData(
-                    topTitles: AxisTitles(
-                      sideTitles: SideTitles(showTitles: false),
-                    ),
-                    rightTitles: AxisTitles(
-                      sideTitles: SideTitles(showTitles: false),
-                    ),
+                    topTitles: const AxisTitles(),
+                    rightTitles: const AxisTitles(),
                     bottomTitles: AxisTitles(
                       sideTitles: _bottomTitles,
                     ),
@@ -72,37 +72,32 @@ class ChartCard extends StatelessWidget {
                   // グラフの設定
                   borderData: FlBorderData(
                     border: const Border(
-                      top: BorderSide.none,
-                      right: BorderSide.none,
-                      left: BorderSide(width: 1),
-                      bottom: BorderSide(width: 1),
+                      left: BorderSide(),
+                      bottom: BorderSide(),
                     ),
                   ),
                 ),
               ),
               Align(
-                alignment: const Alignment(0.0, 0.0),
                 child: Padding(
                   padding: const EdgeInsets.only(left: 45, bottom: 21),
                   child: BarChart(
                     BarChartData(
                       // グラフのx軸y軸のの表示数
-                      minY: 0.0,
+                      minY: 0,
                       // タイトル
                       titlesData: const FlTitlesData(
                         show: false,
                       ),
                       // 背景のグリッド線の設定
-                      gridData: FlGridData(
+                      gridData: const FlGridData(
                         show: false, // 背景のグリッド線の有無
                       ),
                       // 外枠表の線
                       borderData: FlBorderData(
                         border: const Border(
-                          top: BorderSide.none,
-                          right: BorderSide.none,
-                          left: BorderSide(width: 1),
-                          bottom: BorderSide(width: 1),
+                          left: BorderSide(),
+                          bottom: BorderSide(),
                         ),
                       ),
                       //　赤色のグラフ
@@ -116,37 +111,50 @@ class ChartCard extends StatelessWidget {
                           x: 1,
                           barRods: [
                             BarChartRodData(
-                                toY: 8, width: 10, color: AppColor.accentColor),
+                              toY: 8,
+                              width: 10,
+                              color: AppColor.accentColor,
+                            ),
                           ],
                         ),
                         BarChartGroupData(
                           x: 2,
                           barRods: [
                             BarChartRodData(
-                                toY: 3,
-                                width: 10,
-                                color: Color(AppColor.accentColor.value)),
+                              toY: 3,
+                              width: 10,
+                              color: Color(AppColor.accentColor.value),
+                            ),
                           ],
                         ),
                         BarChartGroupData(
                           x: 3,
                           barRods: [
                             BarChartRodData(
-                                toY: 5, width: 10, color: AppColor.accentColor),
+                              toY: 5,
+                              width: 10,
+                              color: AppColor.accentColor,
+                            ),
                           ],
                         ),
                         BarChartGroupData(
                           x: 4,
                           barRods: [
                             BarChartRodData(
-                                toY: 8, width: 10, color: AppColor.accentColor),
+                              toY: 8,
+                              width: 10,
+                              color: AppColor.accentColor,
+                            ),
                           ],
                         ),
                         BarChartGroupData(
                           x: 5,
                           barRods: [
                             BarChartRodData(
-                                toY: 7, width: 10, color: AppColor.accentColor),
+                              toY: 7,
+                              width: 10,
+                              color: AppColor.accentColor,
+                            ),
                           ],
                         ),
                       ],
@@ -166,17 +174,14 @@ SideTitles get _bottomTitles => SideTitles(
       showTitles: true,
       interval: 1,
       getTitlesWidget: (value, meta) {
-        String text = '';
+        var text = '';
         switch (value.toInt()) {
           case 1:
             text = '先々月';
-            break;
           case 2:
             text = '先月';
-            break;
           case 3:
             text = '今月';
-            break;
         }
 
         return Text(text);
