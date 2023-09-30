@@ -9,6 +9,11 @@ on:
     branches:
       - main
 
+env:
+  DATABASE_URL: ${{secrets.VAR_URL}}
+  SHADOW_DATABASE_URL: ${{secrets.VAR_ANONKEY}}
+
+
 jobs:
   build-ios:
     runs-on: macos-latest

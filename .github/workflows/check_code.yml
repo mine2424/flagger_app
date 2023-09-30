@@ -7,6 +7,10 @@ on:
   # GitHubページから手動で実行できる
   workflow_dispatch:
 
+env:
+  DATABASE_URL: ${{secrets.VAR_URL}}
+  SHADOW_DATABASE_URL: ${{secrets.VAR_ANONKEY}}
+
 jobs:
   test:
     name: Check the source code
