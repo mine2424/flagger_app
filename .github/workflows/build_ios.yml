@@ -3,7 +3,7 @@ name: iOS Build
 on:
   pull_request:
     # プルリク作成時とプルリクにコミットが行われた時、再開された時
-    types: [ opened, synchronize, reopened ]
+    types: [opened, synchronize, reopened]
     # mainにマージされた時
   push:
     branches:
@@ -13,7 +13,6 @@ env:
   DATABASE_URL: ${{secrets.VAR_URL}}
   SHADOW_DATABASE_URL: ${{secrets.VAR_ANONKEY}}
 
-
 jobs:
   build-ios:
     runs-on: macos-latest
@@ -21,14 +20,14 @@ jobs:
       - uses: actions/checkout@v3
       - name: Create .env file
         run: |
-          cat > assets/.env <<EOF
+          cat > .env <<EOF
           VAR_URL=${{ secrets.VAR_URL }}
           VAR_ANONKEY=${{ secrets.VAR_ANONKEY }}
           EOF
       - uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.13.6'
-          channel: 'stable'
+          flutter-version: "3.13.6"
+          channel: "stable"
           cache: true
       - run: flutter pub get
       # iOS Build
