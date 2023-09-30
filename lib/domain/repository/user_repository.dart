@@ -24,6 +24,7 @@
 //   }
 
 //   Future<void> updateUser(User user) async {
+// ignore: lines_longer_than_80_chars
 //     final response = await _db.from('users').update(user.toJson()).eq('id', user.id).execute();
 //     if (response.error != null) {
 //       throw response.error!;
