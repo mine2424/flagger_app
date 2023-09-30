@@ -11,3 +11,4 @@ linter:
     one_member_abstracts: false
     sort_pub_dependencies: false
     depend_on_referenced_packages: false
+    directives_ordering: false
