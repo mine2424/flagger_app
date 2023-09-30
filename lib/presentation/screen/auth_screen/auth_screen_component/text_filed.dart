@@ -1,9 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class TextFieldComponent extends StatelessWidget {
   const TextFieldComponent({
-    required this.controller, required this.hintText, super.key,
+    required this.controller,
+    required this.hintText,
+    super.key,
   });
 
   final TextEditingController controller;
