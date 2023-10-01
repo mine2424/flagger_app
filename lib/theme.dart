@@ -9,6 +9,9 @@ ThemeData customTheme() {
     primaryColor: AppColor.secondColor,
     cardColor: Colors.white,
     scaffoldBackgroundColor: AppColor.firstColor,
+    appBarTheme: const AppBarTheme(
+      backgroundColor: AppColor.accentColor,
+    ),
     textSelectionTheme: const TextSelectionThemeData(
       cursorColor: AppColor.secondColor,
       selectionColor: AppColor.firstColor,

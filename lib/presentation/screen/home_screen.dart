@@ -2,25 +2,34 @@ import 'package:flutter/material.dart';
 
 import 'package:oprol_template/presentation/component/chart_card.dart';
 import 'package:oprol_template/presentation/component/large_card.dart';
+import 'package:oprol_template/presentation/screen/iat_test_screen/iat_test_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      // appBar: GoodAppber(),
+    return Scaffold(
       body: Center(
         child: Column(
           children: [
-            SizedBox(height: 100),
-            SizedBox(height: 40),
+            const SizedBox(height: 100),
+            const SizedBox(height: 40),
             Padding(
-              padding: EdgeInsets.all(16),
-              child: LargeCard(title: '09:23'),
+              padding: const EdgeInsets.all(16),
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute<void>(
+                      builder: (context) => IATTestScreen(),
+                    ),
+                  );
+                },
+                child: const LargeCard(title: '09:23'),
+              ),
             ),
-            SizedBox(height: 40),
-            Padding(
+            const SizedBox(height: 40),
+            const Padding(
               padding: EdgeInsets.all(16),
               child: ChartCard(
                 improvementRate0: 20,
