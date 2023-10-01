@@ -14,9 +14,14 @@ class OrganizationMemberScreen extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    int randomIntWithRange(int min, int max) {
+      final value = Random().nextInt(max - min);
+      return value + min;
+    }
 
+    final averageScoreList = List.generate(6, (index) => (index.toDouble(), randomIntWithRange(-2, 10).toDouble()));
 
-    double calculateLSM(List<(double ,double)> coordinates){
+    double calculateLSM(List<(double, double)> coordinates) {
       final len = coordinates.length;
       final sigX = coordinates.fold(0.0, (acc, next) => acc + next.$1);
       final sigY = coordinates.fold(0.0, (acc, next) => acc + next.$2);
@@ -27,10 +32,6 @@ class OrganizationMemberScreen extends HookConsumerWidget {
       final a = (len * sigXY - sigX * sigY) / (len * sigXX - pow(sigX, 2));
       return a;
     }
-    //
-    // List<(double, double)> chartScoreList () {
-    //
-    // }
 
     return Card(
       elevation: 5,
@@ -52,9 +53,11 @@ class OrganizationMemberScreen extends HookConsumerWidget {
                       width: 240,
                       child: const LineChartComponent(),
                     ),
-                    const Padding(
-                      padding: EdgeInsets.all(8),
-                      child: Text('前回に比べてスコアが上がり、メンタルの安定を感じます。この調子でいきましょう!'),
+                    Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: calculateLSM(averageScoreList) > 1
+                          ? const Text('チームが悪い状況になっています。改善が必要です。')
+                          : const Text('前回に比べてスコアが改善され、メンタルの安定を感じます。この調子でいきましょう!'),
                     ),
                   ],
                 ),
