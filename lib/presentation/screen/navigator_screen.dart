@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:oprol_template/presentation/screen/home_screen.dart';
 import 'package:oprol_template/presentation/screen/my_page_screen/my_page_analysis.dart';
 import 'package:oprol_template/presentation/screen/org_screen/organization_screen.dart';
+import 'package:oprol_template/presentation/screen/organization_screen/organization_screen.dart';
 
 // enumは列挙型と呼ばれている固定数の定数値を表すために使用される
 // 特別な種類のクラスです。
@@ -28,7 +29,7 @@ class ScreenContainer extends ConsumerWidget {
     final screens = <Widget>[
       const HomeScreen(),
       const MyPageAnalysis(),
-      // const OrganizationScreen(),
+      const OrganizationScreen(),
     ];
     return Scaffold(
       body: screens[tabType.index],
