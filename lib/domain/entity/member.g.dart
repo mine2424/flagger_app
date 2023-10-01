@@ -30,7 +30,7 @@ Map<String, dynamic> _$$MemberRequestImplToJson(_$MemberRequestImpl instance) =>
 
 _$MemberResponseImpl _$$MemberResponseImplFromJson(Map<String, dynamic> json) =>
     _$MemberResponseImpl(
-      id: json['id'] as String,
+      id: json['id'] as String? ?? '',
       username: json['username'] as String? ?? '',
       email: json['email'] as String? ?? '',
       organizationId: json['organization_id'] as int? ?? 0,

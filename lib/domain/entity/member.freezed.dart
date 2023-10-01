@@ -393,7 +393,7 @@ class __$$MemberResponseImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$MemberResponseImpl implements _MemberResponse {
   const _$MemberResponseImpl(
-      {required this.id,
+      {this.id = '',
       this.username = '',
       this.email = '',
       this.organizationId = 0,
@@ -404,6 +404,7 @@ class _$MemberResponseImpl implements _MemberResponse {
       _$$MemberResponseImplFromJson(json);
 
   @override
+  @JsonKey()
   final String id;
   @override
   @JsonKey()
@@ -463,7 +464,7 @@ class _$MemberResponseImpl implements _MemberResponse {
 
 abstract class _MemberResponse implements MemberResponse {
   const factory _MemberResponse(
-      {required final String id,
+      {final String id,
       final String username,
       final String email,
       final int organizationId,
