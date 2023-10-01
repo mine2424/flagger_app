@@ -1,9 +1,10 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:supabase_flutter/supabase_flutter.dart' as supabase_flutter;
+
 import 'package:oprol_template/domain/entity/answer.dart';
 import 'package:oprol_template/domain/repository/answer_repository.dart';
 import 'package:oprol_template/domain/repository/member_repository.dart';
 import 'package:oprol_template/foundation/supabase_client_provider.dart';
-import 'package:supabase_flutter/supabase_flutter.dart' as supabase_flutter;
 
 final iatUseCaseProvider = Provider(
   (ref) => IATUseCase(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -40,7 +41,10 @@ class IATTestResultScreen extends HookConsumerWidget {
               children: [
                 Text(
                   'あなたのスコアは',
-                  style: Theme.of(context).textTheme.bodyLarge!.copyWith(fontWeight: FontWeight.bold),
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyLarge!
+                      .copyWith(fontWeight: FontWeight.bold),
                 ),
                 const Gap(40),
                 Text(
@@ -57,8 +61,12 @@ class IATTestResultScreen extends HookConsumerWidget {
             Padding(
               padding: const EdgeInsets.all(16),
               child: Text(
+                // ignore: lines_longer_than_80_chars
                 '素晴らしいです！自分のを安定させるためのステップを踏んでいくことが大切です。また、ストレスフルな状況に遭遇した場合でも、感情をコントロールし、ポジティブな考え方を心がけましょう。',
-                style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontWeight: FontWeight.bold),
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyMedium!
+                    .copyWith(fontWeight: FontWeight.bold),
               ),
             ),
             const Gap(30),
