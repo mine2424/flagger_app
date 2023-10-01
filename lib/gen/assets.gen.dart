@@ -20,8 +20,12 @@ class $AssetsImagesGen {
   SvgGenImage get iconFlutter =>
       const SvgGenImage('assets/images/icon_flutter.svg');
 
+  /// File path: assets/images/sample_iat_photo.png
+  AssetGenImage get sampleIatPhoto =>
+      const AssetGenImage('assets/images/sample_iat_photo.png');
+
   /// List of all assets
-  List<SvgGenImage> get values => [iconFlutter];
+  List<dynamic> get values => [iconFlutter, sampleIatPhoto];
 }
 
 class $AssetsLottieGen {
