@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 class IATTestResultScreen extends StatelessWidget {
-  const IATTestResultScreen({super.key});
+  const IATTestResultScreen({required this.score, super.key});
+
+  final double score;
 
   @override
   Widget build(BuildContext context) {
@@ -17,9 +20,13 @@ class IATTestResultScreen extends StatelessWidget {
             const SizedBox(height: 20),
             const Text('あなたのIATスコアは'),
             const SizedBox(height: 20),
-            const Text('0.5'),
+            Text(score.toString()),
             const SizedBox(height: 20),
             const Text('です'),
+            Lottie.asset(
+              'assets/lottie/celebrate.json',
+              height: 200,
+            ),
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
