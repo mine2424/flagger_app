@@ -7,10 +7,9 @@
 // ignore_for_file: type=lint
 // ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal,deprecated_member_use
 
-import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter/services.dart';
 import 'package:lottie/lottie.dart';
 
 class $AssetsImagesGen {
@@ -27,12 +26,16 @@ class $AssetsImagesGen {
 class $AssetsLottieGen {
   const $AssetsLottieGen();
 
+  /// File path: assets/lottie/celebrate.json
+  LottieGenImage get celebrate =>
+      const LottieGenImage('assets/lottie/celebrate.json');
+
   /// File path: assets/lottie/greentimer.json
   LottieGenImage get greentimer =>
       const LottieGenImage('assets/lottie/greentimer.json');
 
   /// List of all assets
-  List<LottieGenImage> get values => [greentimer];
+  List<LottieGenImage> get values => [celebrate, greentimer];
 }
 
 class Assets {

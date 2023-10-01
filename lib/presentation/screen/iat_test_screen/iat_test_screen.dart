@@ -6,6 +6,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gap/gap.dart';
 import 'package:lottie/lottie.dart';
+import 'package:oprol_template/gen/assets.gen.dart';
 
 import 'package:oprol_template/presentation/screen/iat_test_screen/iat_test_result_screen.dart';
 
@@ -38,10 +39,8 @@ class IATTestScreen extends HookWidget {
 
     final evaluateIAPSum = useState<double>(0);
 
-    final leftTextKeyList =
-        List.generate(questions.length, (index) => GlobalKey());
-    final rightTextKeyList =
-        List.generate(questions.length, (index) => GlobalKey());
+    final leftTextKeyList = List.generate(questions.length, (index) => GlobalKey());
+    final rightTextKeyList = List.generate(questions.length, (index) => GlobalKey());
 
     final carouselController = CarouselController();
 
@@ -62,8 +61,7 @@ class IATTestScreen extends HookWidget {
 
       final elapsed = stopWatch.elapsed;
       // ignore: lines_longer_than_80_chars
-      final elapsedByStop =
-          double.parse('${elapsed.inSeconds}.${elapsed.inMilliseconds}');
+      final elapsedByStop = double.parse('${elapsed.inSeconds}.${elapsed.inMilliseconds}');
       debugPrint('elapsedSeconds: ${elapsedMilliseconds.value}');
 
       // A: 回答の+,-の位置の評価（横軸のみ）
@@ -76,10 +74,8 @@ class IATTestScreen extends HookWidget {
       debugPrint('widthPosition: $widthPosition');
 
       // B: tapの位置の評価
-      final leftTextRenderBox =
-          leftSideTextKey.currentContext!.findRenderObject()! as RenderBox;
-      final rightTextRenderBox =
-          rightSideTextKey.currentContext!.findRenderObject()! as RenderBox;
+      final leftTextRenderBox = leftSideTextKey.currentContext!.findRenderObject()! as RenderBox;
+      final rightTextRenderBox = rightSideTextKey.currentContext!.findRenderObject()! as RenderBox;
 
       // widthの半分より左側を選択した場合は左側のテキストの座標を取得
       // 右側を選択した場合は右側のテキストの座標を取得
@@ -100,8 +96,7 @@ class IATTestScreen extends HookWidget {
       final fx = textPosition.dx;
       final fy = textPosition.dy;
 
-      final tapDistance =
-          sqrt(pow(fx - regulatedDx, 2) + pow(fy - regulatedDy, 2));
+      final tapDistance = sqrt(pow(fx - regulatedDx, 2) + pow(fy - regulatedDy, 2));
 
       debugPrint('tap distance: $tapDistance');
 
@@ -126,10 +121,6 @@ class IATTestScreen extends HookWidget {
         ..value += tapDistance / 1000;
 
       // naxt page
-    }
-
-    void evaluateIATResult() {
-      debugPrint('all result: ${evaluateIAPSum.value}');
     }
 
     return Scaffold(
@@ -159,7 +150,6 @@ class IATTestScreen extends HookWidget {
 
                 if (index == questions.length - 1) {
                   debugPrint('最後のページ');
-                  evaluateIATResult();
                   Navigator.of(context).push(
                     MaterialPageRoute<void>(
                       fullscreenDialog: true,
@@ -197,29 +187,19 @@ class IATTestScreen extends HookWidget {
                             children: [
                               Text(
                                 'そう思わない',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .titleLarge!
-                                    .copyWith(fontWeight: FontWeight.bold),
+                                style: Theme.of(context).textTheme.titleLarge!.copyWith(fontWeight: FontWeight.bold),
                                 key: leftTextKeyList[i],
                               ),
                               Text(
                                 'そう思う',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .titleLarge!
-                                    .copyWith(fontWeight: FontWeight.bold),
+                                style: Theme.of(context).textTheme.titleLarge!.copyWith(fontWeight: FontWeight.bold),
                                 key: rightTextKeyList[i],
                               ),
                             ],
                           ),
                         ),
                         const Gap(60),
-                        Lottie.asset(
-                          'assets/lottie/greentimer.json',
-                          width: 300,
-                          // height: 400,
-                        ),
+                        LottieGenImage(Assets.lottie.greentimer.path).lottie(width: 300),
                       ],
                     );
             }).toList(),
