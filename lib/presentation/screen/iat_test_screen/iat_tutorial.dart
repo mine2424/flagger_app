@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:oprol_template/gen/assets.gen.dart';
-import 'package:oprol_template/gen/colors.gen.dart';
-import 'package:oprol_template/presentation/screen/iat_test_screen/iat_test_screen.dart';
+import 'package:flagger_app/gen/assets.gen.dart';
+import 'package:flagger_app/gen/colors.gen.dart';
+import 'package:flagger_app/presentation/screen/iat_test_screen/iat_test_screen.dart';
 
 class IatTutorial extends StatelessWidget {
   const IatTutorial({super.key});
@@ -17,8 +17,6 @@ class IatTutorial extends StatelessWidget {
                 color: Colors.white,
               ),
         ),
-
-// どこでも触っていい、選択肢二つ、制限時間が10秒、時間が経てば強制遷移、全10問
       ),
       body: ColoredBox(
         color: AppColor.firstColor,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:oprol_template/gen/colors.gen.dart';
+
+import 'package:flagger_app/gen/colors.gen.dart';
 
 class LargeCard extends StatelessWidget {
   const LargeCard({required this.title, super.key});
@@ -28,20 +29,21 @@ class LargeCard extends StatelessWidget {
             const Text(
               '今回の提出期限まであと',
               style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold),
+                fontSize: 16,
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
             ),
             const SizedBox(height: 20),
             Text(
               title,
               style: const TextStyle(
-                  fontSize: 64,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white),
+                fontSize: 64,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
             ),
-            Align(
-              alignment: Alignment.center,
+            const Align(
               child: Text(
                 '回答する',
                 style: TextStyle(
@@ -49,7 +51,7 @@ class LargeCard extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),

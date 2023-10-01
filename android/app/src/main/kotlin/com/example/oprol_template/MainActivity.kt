@@ -1,4 +1,4 @@
-package com.example.oprol_template
+package com.example.flagger_app
 
 import io.flutter.embedding.android.FlutterActivity
 

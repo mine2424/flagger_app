@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:gap/gap.dart';
 
-import 'package:oprol_template/presentation/component/chart_card.dart';
+import 'package:flagger_app/presentation/component/chart_card.dart';
 
 class MyPageAnalysis extends StatelessWidget {
   const MyPageAnalysis({super.key});

@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import 'package:oprol_template/domain/entity/member.dart';
-import 'package:oprol_template/presentation/component/line_chat.dart';
+import 'package:flagger_app/domain/entity/member.dart';
+import 'package:flagger_app/presentation/component/line_chat.dart';
 
 class OrganizationMemberScreen extends HookConsumerWidget {
   const OrganizationMemberScreen(this.allMemberState, {super.key});
@@ -19,14 +19,17 @@ class OrganizationMemberScreen extends HookConsumerWidget {
       return value + min;
     }
 
-    final averageScoreList = List.generate(6, (index) => (index.toDouble(), randomIntWithRange(-2, 10).toDouble()));
+    final averageScoreList = List.generate(
+      6,
+      (index) => (index.toDouble(), randomIntWithRange(-2, 10).toDouble()),
+    );
 
     double calculateLSM(List<(double, double)> coordinates) {
       final len = coordinates.length;
-      final sigX = coordinates.fold(0.0, (acc, next) => acc + next.$1);
-      final sigY = coordinates.fold(0.0, (acc, next) => acc + next.$2);
-      final sigXX = coordinates.fold(0.0, (acc, c) => acc + c.$1 * c.$1);
-      final sigXY = coordinates.fold(0.0, (acc, c) => acc + c.$1 * c.$2);
+      final sigX = coordinates.fold<double>(0, (acc, next) => acc + next.$1);
+      final sigY = coordinates.fold<double>(0, (acc, next) => acc + next.$2);
+      final sigXX = coordinates.fold<double>(0, (acc, c) => acc + c.$1 * c.$1);
+      final sigXY = coordinates.fold<double>(0, (acc, c) => acc + c.$1 * c.$2);
 
       // a(傾き)を求める
       final a = (len * sigXY - sigX * sigY) / (len * sigXX - pow(sigX, 2));
@@ -57,7 +60,9 @@ class OrganizationMemberScreen extends HookConsumerWidget {
                       padding: const EdgeInsets.all(8),
                       child: calculateLSM(averageScoreList) > 0.2
                           ? const Text('チームが悪い状況になっています。改善が必要です。')
-                          : const Text('前回に比べてスコアが改善され、メンタルの安定を感じます。この調子でいきましょう!'),
+                          : const Text(
+                              '前回に比べてスコアが改善され、メンタルの安定を感じます。この調子でいきましょう!',
+                            ),
                     ),
                   ],
                 ),

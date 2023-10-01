@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import 'package:oprol_template/presentation/component/line_chat.dart';
+import 'package:flagger_app/presentation/component/line_chat.dart';
 
 class TeamAnalysis extends HookConsumerWidget {
   const TeamAnalysis({super.key});

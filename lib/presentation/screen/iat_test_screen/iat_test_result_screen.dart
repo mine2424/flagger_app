@@ -4,9 +4,9 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import 'package:oprol_template/gen/assets.gen.dart';
-import 'package:oprol_template/gen/colors.gen.dart';
-import 'package:oprol_template/use_case/iat_use_case.dart';
+import 'package:flagger_app/gen/assets.gen.dart';
+import 'package:flagger_app/gen/colors.gen.dart';
+import 'package:flagger_app/use_case/iat_use_case.dart';
 
 class IATTestResultScreen extends HookConsumerWidget {
   const IATTestResultScreen({required this.score, super.key});

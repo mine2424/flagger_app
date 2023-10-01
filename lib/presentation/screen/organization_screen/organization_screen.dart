@@ -4,10 +4,10 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import 'package:oprol_template/domain/entity/member.dart';
-import 'package:oprol_template/domain/repository/member_repository.dart';
-import 'package:oprol_template/presentation/screen/organization_screen/component/team_analysis.dart';
-import 'package:oprol_template/presentation/screen/organization_screen/organization_member_screen.dart';
+import 'package:flagger_app/domain/entity/member.dart';
+import 'package:flagger_app/domain/repository/member_repository.dart';
+import 'package:flagger_app/presentation/screen/organization_screen/component/team_analysis.dart';
+import 'package:flagger_app/presentation/screen/organization_screen/organization_member_screen.dart';
 
 class OrganizationScreen extends HookConsumerWidget {
   const OrganizationScreen({super.key});

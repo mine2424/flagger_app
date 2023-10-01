@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:oprol_template/presentation/component/chart_card.dart';
-import 'package:oprol_template/presentation/component/large_card.dart';
-import 'package:oprol_template/presentation/screen/iat_test_screen/iat_tutorial.dart';
+import 'package:flagger_app/presentation/component/chart_card.dart';
+import 'package:flagger_app/presentation/component/large_card.dart';
+import 'package:flagger_app/presentation/screen/iat_test_screen/iat_tutorial.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

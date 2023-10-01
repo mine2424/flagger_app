@@ -1,6 +1,6 @@
 {
-    "name": "oprol_template",
-    "short_name": "oprol_template",
+    "name": "flagger_app",
+    "short_name": "flagger_app",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
