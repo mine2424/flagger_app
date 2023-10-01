@@ -1,6 +1,6 @@
-# flagger
+# flagger_app
 
-this is flagger
+this is flagger_app
 
 # 導入
 
