@@ -4,6 +4,7 @@ import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:oprol_template/presentation/component/custom_text_filed.dart';
+import 'package:oprol_template/presentation/screen/navigator_screen.dart';
 import 'package:oprol_template/use_case/auth_use_case.dart';
 
 class SignUpScreen extends HookConsumerWidget {
@@ -65,6 +66,11 @@ class SignUpScreen extends HookConsumerWidget {
                         ref: ref,
                         email: emailController.text,
                         password: passwordController.text,
+                      );
+                      await Navigator.of(context).push(
+                        MaterialPageRoute<void>(
+                          builder: (context) => ScreenContainer(),
+                        ),
                       );
                     },
                     style: ButtonStyle(

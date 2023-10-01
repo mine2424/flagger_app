@@ -32,6 +32,7 @@ class IATTestResultScreen extends StatelessWidget {
             ElevatedButton(
               onPressed: () {
                 Navigator.of(context).pop();
+                Navigator.of(context).pop();
               },
               child: const Text('戻る'),
             ),
