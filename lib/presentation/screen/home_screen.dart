@@ -13,7 +13,7 @@ class HomeScreen extends StatelessWidget {
       body: Center(
         child: Column(
           children: [
-            const SizedBox(height: 100),
+            const SizedBox(height: 81),
             const SizedBox(height: 40),
             Padding(
               padding: const EdgeInsets.all(16),
@@ -28,7 +28,7 @@ class HomeScreen extends StatelessWidget {
                 child: const LargeCard(title: '09:23'),
               ),
             ),
-            const SizedBox(height: 40),
+            const SizedBox(height: 24),
             const Padding(
               padding: EdgeInsets.all(16),
               child: ChartCard(

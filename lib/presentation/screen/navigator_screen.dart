@@ -28,7 +28,7 @@ class ScreenContainer extends ConsumerWidget {
     final screens = <Widget>[
       const HomeScreen(),
       const MyPageAnalysis(),
-      const Organization(),
+      // const OrganizationScreen(),
     ];
     return Scaffold(
       body: screens[tabType.index],
