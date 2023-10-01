@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 
+import 'package:flagger_app/gen/colors.gen.dart';
+
 class LargeCard extends StatelessWidget {
   const LargeCard({required this.title, super.key});
 
   final String title;
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -13,20 +16,22 @@ class LargeCard extends StatelessWidget {
       ),
       child: Container(
         width: 500,
-        height: 150,
+        height: 240,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(40),
-          color: const Color(0xffe3dfdc),
+          color: AppColor.accentColor,
         ),
         child: Column(
           children: [
             const Padding(
-              padding: EdgeInsets.only(top: 12),
+              padding: EdgeInsets.only(top: 32),
             ),
             const Text(
               '今回の提出期限まであと',
               style: TextStyle(
                 fontSize: 16,
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
               ),
             ),
             const SizedBox(height: 20),
@@ -35,6 +40,16 @@ class LargeCard extends StatelessWidget {
               style: const TextStyle(
                 fontSize: 64,
                 fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
+            ),
+            const Align(
+              child: Text(
+                '回答する',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
           ],

@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gap/gap.dart';
-import 'package:lottie/lottie.dart';
 
+import 'package:flagger_app/gen/assets.gen.dart';
 import 'package:flagger_app/presentation/screen/iat_test_screen/iat_test_result_screen.dart';
 
 class IATTestScreen extends HookWidget {
@@ -16,13 +16,13 @@ class IATTestScreen extends HookWidget {
     '一日の終わりには、自分の仕事に満足していることが多いですか？',
     '週末に仕事のことを考えることはよくありますか？',
     '仕事のストレスを感じることは日常的ですか？',
-    // '仕事の量は適切だと感じますか？',
-    // '仕事の締め切りに追われることが多いですか？',
-    // '仕事中に適切に休息をとることができていますか？',
-    // '上司や同僚とのコミュニケーションを、ストレスを感じることなくスムーズに取ることができていますか？',
-    // '仕事のミスに対して、過度なプレッシャーを感じますか？',
-    // '仕事に対する自信はありますか？',
-    // '仕事の目標や期待値が明確ですか？',
+    '仕事の量は適切だと感じますか？',
+    '仕事の締め切りに追われることが多いですか？',
+    '仕事中に適切に休息をとることができていますか？',
+    '上司や同僚とのコミュニケーションを、ストレスを感じることなくスムーズに取ることができていますか？',
+    '仕事のミスに対して、過度なプレッシャーを感じますか？',
+    '仕事に対する自信はありますか？',
+    '仕事の目標や期待値が明確ですか？',
     '',
   ];
 
@@ -30,6 +30,8 @@ class IATTestScreen extends HookWidget {
   static const double _baseHeight = 640;
 
   final stopWatch = Stopwatch()..start();
+
+  final carouselController = CarouselController();
 
   @override
   Widget build(BuildContext context) {
@@ -42,8 +44,6 @@ class IATTestScreen extends HookWidget {
         List.generate(questions.length, (index) => GlobalKey());
     final rightTextKeyList =
         List.generate(questions.length, (index) => GlobalKey());
-
-    final carouselController = CarouselController();
 
     useEffect(
       () {
@@ -126,10 +126,7 @@ class IATTestScreen extends HookWidget {
         ..value += tapDistance / 1000;
 
       // naxt page
-    }
-
-    void evaluateIATResult() {
-      debugPrint('all result: ${evaluateIAPSum.value}');
+      carouselController.nextPage();
     }
 
     return Scaffold(
@@ -159,7 +156,6 @@ class IATTestScreen extends HookWidget {
 
                 if (index == questions.length - 1) {
                   debugPrint('最後のページ');
-                  evaluateIATResult();
                   Navigator.of(context).push(
                     MaterialPageRoute<void>(
                       fullscreenDialog: true,
@@ -215,11 +211,8 @@ class IATTestScreen extends HookWidget {
                           ),
                         ),
                         const Gap(60),
-                        Lottie.asset(
-                          'assets/lottie/greentimer.json',
-                          width: 300,
-                          // height: 400,
-                        ),
+                        LottieGenImage(Assets.lottie.greentimer.path)
+                            .lottie(width: 300),
                       ],
                     );
             }).toList(),

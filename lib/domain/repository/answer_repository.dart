@@ -6,7 +6,7 @@ import 'package:supabase_flutter/supabase_flutter.dart' as supabase_flutter;
 import 'package:flagger_app/domain/entity/answer.dart';
 import 'package:flagger_app/foundation/supabase_client_provider.dart';
 
-final memberRepositoryProvider = Provider(
+final answerRepositoryProvider = Provider(
   (ref) => AnswerRepository(ref.read(supabaseClientProvider)),
 );
 
