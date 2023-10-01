@@ -20,7 +20,9 @@ class ScreenContainer extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // ref.watchで変数の状態の変化を監視する。
-    final tabType = ref.watch(tabTypeProvider.state);
+    final tabTypeNotifier = ref.watch(tabTypeProvider.notifier);
+    final tabType = ref.watch(tabTypeProvider);
+
     // List型で画面遷移先のページを定義する。
     // 参考にしたコードは、final _screensと書かれていた!
     final screens = <Widget>[
@@ -29,11 +31,11 @@ class ScreenContainer extends ConsumerWidget {
       const Organization(),
     ];
     return Scaffold(
-      body: screens[tabType.state.index],
+      body: screens[tabType.index],
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: tabType.state.index,
+        currentIndex: tabType.index,
         onTap: (int selectIndex) {
-          tabType.state = TabType.values[selectIndex];
+          tabTypeNotifier.state = TabType.values[selectIndex];
         },
         selectedItemColor: Colors.black,
         unselectedItemColor: Colors.grey,
