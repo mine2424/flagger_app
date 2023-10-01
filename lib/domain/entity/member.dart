@@ -7,7 +7,7 @@ part 'member.g.dart';
 typedef MemberId = String;
 
 final memberForAuthStatusProvider = StateProvider<MemberResponse>(
-    (ref) => const MemberResponse(),
+  (ref) => const MemberResponse(),
 );
 
 @freezed
