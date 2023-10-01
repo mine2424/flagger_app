@@ -55,7 +55,7 @@ class OrganizationMemberScreen extends HookConsumerWidget {
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8),
-                      child: calculateLSM(averageScoreList) > 1
+                      child: calculateLSM(averageScoreList) > 0.2
                           ? const Text('チームが悪い状況になっています。改善が必要です。')
                           : const Text('前回に比べてスコアが改善され、メンタルの安定を感じます。この調子でいきましょう!'),
                     ),

@@ -28,7 +28,7 @@ class MemberRepository {
     }
   }
 
-  Future<List<MemberResponse>> getMember(MemberId id) async {
+  Future<MemberResponse> getMember(MemberId id) async {
     try {
       final response = await _db
           .from('members')
@@ -36,7 +36,7 @@ class MemberRepository {
             'id, username, email, organization_id',
           )
           .eq('id', id);
-      return response.map(MemberResponse.fromJson).toList();
+      return MemberResponse.fromJson(response.first);
     } catch (e) {
       debugPrint(e.toString());
       rethrow;

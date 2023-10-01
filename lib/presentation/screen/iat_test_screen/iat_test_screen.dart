@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gap/gap.dart';
-import 'package:lottie/lottie.dart';
 
+import 'package:oprol_template/gen/assets.gen.dart';
 import 'package:oprol_template/presentation/screen/iat_test_screen/iat_test_result_screen.dart';
 
 class IATTestScreen extends HookWidget {
@@ -128,10 +128,6 @@ class IATTestScreen extends HookWidget {
       // naxt page
     }
 
-    void evaluateIATResult() {
-      debugPrint('all result: ${evaluateIAPSum.value}');
-    }
-
     return Scaffold(
       body: SizedBox(
         height: MediaQuery.sizeOf(context).height,
@@ -159,7 +155,6 @@ class IATTestScreen extends HookWidget {
 
                 if (index == questions.length - 1) {
                   debugPrint('最後のページ');
-                  evaluateIATResult();
                   Navigator.of(context).push(
                     MaterialPageRoute<void>(
                       fullscreenDialog: true,
@@ -215,11 +210,8 @@ class IATTestScreen extends HookWidget {
                           ),
                         ),
                         const Gap(60),
-                        Lottie.asset(
-                          'assets/lottie/greentimer.json',
-                          width: 300,
-                          // height: 400,
-                        ),
+                        LottieGenImage(Assets.lottie.greentimer.path)
+                            .lottie(width: 300),
                       ],
                     );
             }).toList(),

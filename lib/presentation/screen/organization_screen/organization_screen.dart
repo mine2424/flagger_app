@@ -36,28 +36,35 @@ class OrganizationScreen extends HookConsumerWidget {
     );
 
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            '株式会社 Oprol',
-            style: Theme.of(context).textTheme.displaySmall,
-          ),
-          Text(
-            'チーム全体のIAPスコアの推移',
-            style: Theme.of(context).textTheme.headlineMedium,
-            textAlign: TextAlign.left,
-          ),
-          const Gap(16),
-          SizedBox(
-            height: MediaQuery.of(context).size.height * 0.3,
-            child: const TeamAnalysis(),
-          ),
-          SizedBox(
-            height: MediaQuery.of(context).size.height * 0.45,
-            child: OrganizationMemberScreen(allMembersState.value),
-          ),
-        ],
+      body: SafeArea(
+        child: ListView(
+          // mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Expanded(
+              child: Text(
+                '株式会社 Oprol',
+                style: Theme.of(context).textTheme.displaySmall,
+                textAlign: TextAlign.center,
+              ),
+            ),
+            Expanded(
+              child: Text(
+                'チーム全体のIAPスコアの推移',
+                style: Theme.of(context).textTheme.headlineMedium,
+                textAlign: TextAlign.center,
+              ),
+            ),
+            const Gap(16),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.3,
+              child: const TeamAnalysis(),
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.45,
+              child: OrganizationMemberScreen(allMembersState.value),
+            ),
+          ],
+        ),
       ),
     );
   }

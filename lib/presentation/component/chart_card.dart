@@ -11,7 +11,6 @@ class ChartCard extends StatelessWidget {
     required this.improvementRate2,
     super.key,
   });
-
   // ２ヶ月前までの改善率を受け取る
 
   final int improvementRate0;

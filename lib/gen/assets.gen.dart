@@ -27,12 +27,16 @@ class $AssetsImagesGen {
 class $AssetsLottieGen {
   const $AssetsLottieGen();
 
+  /// File path: assets/lottie/celebrate.json
+  LottieGenImage get celebrate =>
+      const LottieGenImage('assets/lottie/celebrate.json');
+
   /// File path: assets/lottie/greentimer.json
   LottieGenImage get greentimer =>
       const LottieGenImage('assets/lottie/greentimer.json');
 
   /// List of all assets
-  List<LottieGenImage> get values => [greentimer];
+  List<LottieGenImage> get values => [celebrate, greentimer];
 }
 
 class Assets {
