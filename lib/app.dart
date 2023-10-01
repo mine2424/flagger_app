@@ -30,7 +30,6 @@ class App extends HookConsumerWidget {
             isSignIn.value = true;
             return;
           } else {
-            isSignIn.value = false;
             return;
           }
         });
