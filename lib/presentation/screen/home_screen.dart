@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:oprol_template/presentation/component/chart_card.dart';
 import 'package:oprol_template/presentation/component/large_card.dart';
-import 'package:oprol_template/presentation/screen/iat_test_screen/iat_test_screen.dart';
+import 'package:oprol_template/presentation/screen/iat_test_screen/iat_tutorial.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -21,7 +21,7 @@ class HomeScreen extends StatelessWidget {
                 onTap: () {
                   Navigator.of(context).push(
                     MaterialPageRoute<void>(
-                      builder: (context) => IATTestScreen(),
+                      builder: (context) => const IatTutorial(),
                     ),
                   );
                 },
