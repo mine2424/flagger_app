@@ -1,8 +1,7 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import 'package:oprol_template/presentation/screen/home_screen.dart';
 import 'package:oprol_template/presentation/screen/my_page_screen/my_page_analysis.dart';
 import 'package:oprol_template/presentation/screen/org_screen/organization_screen.dart';
@@ -16,7 +15,7 @@ enum TabType { home, map, profile }
 final tabTypeProvider = StateProvider<TabType>((ref) => TabType.home);
 
 class ScreenContainer extends ConsumerWidget {
-  const ScreenContainer({Key? key}) : super(key: key);
+  const ScreenContainer({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -24,13 +23,13 @@ class ScreenContainer extends ConsumerWidget {
     final tabType = ref.watch(tabTypeProvider.state);
     // List型で画面遷移先のページを定義する。
     // 参考にしたコードは、final _screensと書かれていた!
-    List<Widget> _screens = [
-      HomeScreen(),
-      MyPageAnalysis(),
-      Organization(),
+    final screens = <Widget>[
+      const HomeScreen(),
+      const MyPageAnalysis(),
+      const Organization(),
     ];
     return Scaffold(
-      body: _screens[tabType.state.index],
+      body: screens[tabType.state.index],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: tabType.state.index,
         onTap: (int selectIndex) {

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+
 import 'package:gap/gap.dart';
+
 import 'package:oprol_template/presentation/component/chart_card.dart';
 
 class Organization extends StatelessWidget {
@@ -15,9 +17,10 @@ class Organization extends StatelessWidget {
             const Text(
               'Oprol-compnay',
               style: TextStyle(
-                  fontSize: 36,
-                  fontStyle: FontStyle.italic,
-                  fontWeight: FontWeight.bold),
+                fontSize: 36,
+                fontStyle: FontStyle.italic,
+                fontWeight: FontWeight.bold,
+              ),
             ),
             const Padding(
               padding: EdgeInsets.only(top: 40),

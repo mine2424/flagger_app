@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+
 import 'package:gap/gap.dart';
+
 import 'package:oprol_template/presentation/component/chart_card.dart';
 
 class MyPageAnalysis extends StatelessWidget {
@@ -18,7 +20,10 @@ class MyPageAnalysis extends StatelessWidget {
             ),
             Gap(40),
             ChartCard(
-                improvementRate0: 2, imporvementRate1: 5, improvementRate2: 1),
+              improvementRate0: 2,
+              imporvementRate1: 5,
+              improvementRate2: 1,
+            ),
             Gap(40),
             Text(
               'something,something,somethin,something,something,something',
