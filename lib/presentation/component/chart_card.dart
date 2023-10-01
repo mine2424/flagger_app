@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:fl_chart/fl_chart.dart';
 
-import 'package:oprol_template/gen/colors.gen.dart';
+import 'package:flagger_app/gen/colors.gen.dart';
 
 class ChartCard extends StatelessWidget {
   const ChartCard({

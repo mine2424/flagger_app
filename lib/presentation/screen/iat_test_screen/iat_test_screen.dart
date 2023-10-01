@@ -7,7 +7,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gap/gap.dart';
 import 'package:lottie/lottie.dart';
 
-import 'package:oprol_template/presentation/screen/iat_test_screen/iat_test_result_screen.dart';
+import 'package:flagger_app/presentation/screen/iat_test_screen/iat_test_result_screen.dart';
 
 class IATTestScreen extends HookWidget {
   IATTestScreen({super.key});

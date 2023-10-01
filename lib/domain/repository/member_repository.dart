@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:supabase_flutter/supabase_flutter.dart' as supabase_flutter;
 
-import 'package:oprol_template/domain/entity/member.dart';
-import 'package:oprol_template/foundation/supabase_client_provider.dart';
+import 'package:flagger_app/domain/entity/member.dart';
+import 'package:flagger_app/foundation/supabase_client_provider.dart';
 
 final memberRepositoryProvider = Provider(
   (ref) => MemberRepository(ref.read(supabaseClientProvider)),

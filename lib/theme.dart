@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:oprol_template/gen/colors.gen.dart';
+import 'package:flagger_app/gen/colors.gen.dart';
 
 ThemeData customTheme() {
   // TODO(username): テーマ切り替える.

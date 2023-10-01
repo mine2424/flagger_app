@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import 'package:oprol_template/presentation/component/custom_text_filed.dart';
-import 'package:oprol_template/use_case/auth_use_case.dart';
+import 'package:flagger_app/presentation/component/custom_text_filed.dart';
+import 'package:flagger_app/use_case/auth_use_case.dart';
 
 class SignUpScreen extends HookConsumerWidget {
   const SignUpScreen({super.key});

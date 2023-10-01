@@ -4,7 +4,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-import 'package:oprol_template/app.dart';
+import 'package:flagger_app/app.dart';
 
 void main() async {
   await mainInitialize();
