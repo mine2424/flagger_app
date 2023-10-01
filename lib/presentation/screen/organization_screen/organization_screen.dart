@@ -6,6 +6,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:oprol_template/domain/entity/member.dart';
 import 'package:oprol_template/domain/repository/member_repository.dart';
+import 'package:oprol_template/presentation/screen/organization_screen/component/team_analysis.dart';
 import 'package:oprol_template/presentation/screen/organization_screen/organization_member_screen.dart';
 
 class OrganizationScreen extends HookConsumerWidget {
@@ -38,10 +39,22 @@ class OrganizationScreen extends HookConsumerWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text('株式会社 Oprol'),
-          const Gap(20),
+          Text(
+            '株式会社 Oprol',
+            style: Theme.of(context).textTheme.displaySmall,
+          ),
+          Text(
+            'チーム全体のIAPスコアの推移',
+            style: Theme.of(context).textTheme.headlineMedium,
+            textAlign: TextAlign.left,
+          ),
+          const Gap(16),
           SizedBox(
-            height: MediaQuery.of(context).size.height * 0.75,
+            height: MediaQuery.of(context).size.height * 0.3,
+            child: const TeamAnalysis(),
+          ),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.45,
             child: OrganizationMemberScreen(allMembersState.value),
           ),
         ],

@@ -8,7 +8,9 @@ import 'package:oprol_template/foundation/supabase_client_provider.dart';
 
 final memberRepositoryProvider = Provider(
   (ref) => MemberRepository(
-      ref.read(supabaseClientProvider), ref.read(supabaseAuthProvider),),
+    ref.read(supabaseClientProvider),
+    ref.read(supabaseAuthProvider),
+  ),
 );
 
 class MemberRepository {
@@ -69,11 +71,10 @@ class MemberRepository {
 
   Future<supabase_flutter.PostgrestList> getPersonalScoreData() async {
     try {
-      final scoreData = await _db
-          .from('answers')
-          .select<supabase_flutter.PostgrestList>(
-            'average_score, events ( event_date )',
-          );
+      final scoreData =
+          await _db.from('answers').select<supabase_flutter.PostgrestList>(
+                'average_score, events ( event_date )',
+              );
       print(scoreData);
 
       return scoreData;

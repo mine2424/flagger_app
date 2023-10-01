@@ -13,6 +13,10 @@ class OrganizationMemberScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Card(
+      elevation: 5,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
+      ),
       margin: const EdgeInsets.all(16),
       child: SingleChildScrollView(
         child: Column(
@@ -24,9 +28,9 @@ class OrganizationMemberScreen extends HookConsumerWidget {
                   children: [
                     Container(
                       color: Colors.grey,
-                      height: 250,
-                      width: 250,
-                      child: LineChartComponent(),
+                      height: 240,
+                      width: 240,
+                      child: const LineChartComponent(),
                     ),
                     const Padding(
                       padding: EdgeInsets.all(8),
