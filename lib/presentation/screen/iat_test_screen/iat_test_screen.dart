@@ -38,8 +38,10 @@ class IATTestScreen extends HookWidget {
 
     final evaluateIAPSum = useState<double>(0);
 
-    final leftTextKeyList = List.generate(questions.length, (index) => GlobalKey());
-    final rightTextKeyList = List.generate(questions.length, (index) => GlobalKey());
+    final leftTextKeyList =
+        List.generate(questions.length, (index) => GlobalKey());
+    final rightTextKeyList =
+        List.generate(questions.length, (index) => GlobalKey());
 
     final carouselController = CarouselController();
 
@@ -60,7 +62,8 @@ class IATTestScreen extends HookWidget {
 
       final elapsed = stopWatch.elapsed;
       // ignore: lines_longer_than_80_chars
-      final elapsedByStop = double.parse('${elapsed.inSeconds}.${elapsed.inMilliseconds}');
+      final elapsedByStop =
+          double.parse('${elapsed.inSeconds}.${elapsed.inMilliseconds}');
       debugPrint('elapsedSeconds: ${elapsedMilliseconds.value}');
 
       // A: 回答の+,-の位置の評価（横軸のみ）
@@ -73,8 +76,10 @@ class IATTestScreen extends HookWidget {
       debugPrint('widthPosition: $widthPosition');
 
       // B: tapの位置の評価
-      final leftTextRenderBox = leftSideTextKey.currentContext!.findRenderObject()! as RenderBox;
-      final rightTextRenderBox = rightSideTextKey.currentContext!.findRenderObject()! as RenderBox;
+      final leftTextRenderBox =
+          leftSideTextKey.currentContext!.findRenderObject()! as RenderBox;
+      final rightTextRenderBox =
+          rightSideTextKey.currentContext!.findRenderObject()! as RenderBox;
 
       // widthの半分より左側を選択した場合は左側のテキストの座標を取得
       // 右側を選択した場合は右側のテキストの座標を取得
@@ -95,7 +100,8 @@ class IATTestScreen extends HookWidget {
       final fx = textPosition.dx;
       final fy = textPosition.dy;
 
-      final tapDistance = sqrt(pow(fx - regulatedDx, 2) + pow(fy - regulatedDy, 2));
+      final tapDistance =
+          sqrt(pow(fx - regulatedDx, 2) + pow(fy - regulatedDy, 2));
 
       debugPrint('tap distance: $tapDistance');
 
@@ -123,7 +129,7 @@ class IATTestScreen extends HookWidget {
     }
 
     void evaluateIATResult() {
-      print('all result: ${evaluateIAPSum.value}');
+      debugPrint('all result: ${evaluateIAPSum.value}');
     }
 
     return Scaffold(
@@ -191,12 +197,18 @@ class IATTestScreen extends HookWidget {
                             children: [
                               Text(
                                 'そう思わない',
-                                style: Theme.of(context).textTheme.titleLarge!.copyWith(fontWeight: FontWeight.bold),
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .titleLarge!
+                                    .copyWith(fontWeight: FontWeight.bold),
                                 key: leftTextKeyList[i],
                               ),
                               Text(
                                 'そう思う',
-                                style: Theme.of(context).textTheme.titleLarge!.copyWith(fontWeight: FontWeight.bold),
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .titleLarge!
+                                    .copyWith(fontWeight: FontWeight.bold),
                                 key: rightTextKeyList[i],
                               ),
                             ],

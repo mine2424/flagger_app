@@ -13,7 +13,8 @@ class EventRequest with _$EventRequest {
     DateTime? eventDate,
   }) = _EventRequest;
 
-  factory EventRequest.fromJson(Map<String, dynamic> json) => _$EventRequestFromJson(json);
+  factory EventRequest.fromJson(Map<String, dynamic> json) =>
+      _$EventRequestFromJson(json);
 }
 
 @freezed
@@ -25,5 +26,6 @@ class EventResponse with _$EventResponse {
     DateTime? eventDate,
   }) = _EventResponse;
 
-  factory EventResponse.fromJson(Map<String, dynamic> json) => _$EventResponseFromJson(json);
+  factory EventResponse.fromJson(Map<String, dynamic> json) =>
+      _$EventResponseFromJson(json);
 }

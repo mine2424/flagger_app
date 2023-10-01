@@ -14,7 +14,8 @@ class AnswerRequest with _$AnswerRequest {
     @Default(0) int eventId,
   }) = _AnswerRequest;
 
-  factory AnswerRequest.fromJson(Map<String, dynamic> json) => _$AnswerRequestFromJson(json);
+  factory AnswerRequest.fromJson(Map<String, dynamic> json) =>
+      _$AnswerRequestFromJson(json);
 }
 
 @freezed
@@ -27,5 +28,6 @@ class AnswerResponse with _$AnswerResponse {
     @Default(0) int eventId,
   }) = _AnswerResponse;
 
-  factory AnswerResponse.fromJson(Map<String, dynamic> json) => _$AnswerResponseFromJson(json);
+  factory AnswerResponse.fromJson(Map<String, dynamic> json) =>
+      _$AnswerResponseFromJson(json);
 }
