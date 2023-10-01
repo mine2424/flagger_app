@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -12,6 +14,24 @@ class OrganizationMemberScreen extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+
+
+    double calculateLSM(List<(double ,double)> coordinates){
+      final len = coordinates.length;
+      final sigX = coordinates.fold(0.0, (acc, next) => acc + next.$1);
+      final sigY = coordinates.fold(0.0, (acc, next) => acc + next.$2);
+      final sigXX = coordinates.fold(0.0, (acc, c) => acc + c.$1 * c.$1);
+      final sigXY = coordinates.fold(0.0, (acc, c) => acc + c.$1 * c.$2);
+
+      // a(傾き)を求める
+      final a = (len * sigXY - sigX * sigY) / (len * sigXX - pow(sigX, 2));
+      return a;
+    }
+    //
+    // List<(double, double)> chartScoreList () {
+    //
+    // }
+
     return Card(
       elevation: 5,
       shape: RoundedRectangleBorder(
