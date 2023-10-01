@@ -9,15 +9,13 @@ import 'package:oprol_template/foundation/supabase_client_provider.dart';
 final memberRepositoryProvider = Provider(
   (ref) => MemberRepository(
     ref.read(supabaseClientProvider),
-    ref.read(supabaseAuthProvider),
   ),
 );
 
 class MemberRepository {
-  MemberRepository(this._db, this._auth);
+  MemberRepository(this._db);
 
   final supabase_flutter.SupabaseClient _db;
-  final supabase_flutter.GoTrueClient _auth;
 
   // TODO(username): currentUserを保存しとく.
 
@@ -75,7 +73,6 @@ class MemberRepository {
           await _db.from('answers').select<supabase_flutter.PostgrestList>(
                 'average_score, events ( event_date )',
               );
-      print(scoreData);
 
       return scoreData;
     } catch (e) {

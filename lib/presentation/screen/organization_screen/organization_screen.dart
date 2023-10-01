@@ -25,7 +25,7 @@ class OrganizationScreen extends HookConsumerWidget {
         }
 
         Future<void> getPersonalScoreData() async {
-          final result = await repo.getPersonalScoreData();
+          await repo.getPersonalScoreData();
         }
 
         getMembers();

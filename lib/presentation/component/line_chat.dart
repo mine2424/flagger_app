@@ -1,4 +1,5 @@
 import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 
 import 'package:fl_chart/fl_chart.dart';
@@ -9,7 +10,7 @@ class LineChartComponent extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    var random = math.Random();
+    final random = math.Random();
 
     return LineChart(
       LineChartData(
