@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import 'package:oprol_template/presentation/screen/iat_test_screen/iat_test_screen.dart';
+import 'package:oprol_template/presentation/screen/home_screen.dart';
 import 'package:oprol_template/theme.dart';
 
 class App extends HookConsumerWidget {
@@ -14,7 +14,7 @@ class App extends HookConsumerWidget {
       debugShowCheckedModeBanner: false,
       title: 'beta',
       theme: customTheme(),
-      home: IATTestScreen(),
+      home: const HomeScreen(),
     );
   }
 }

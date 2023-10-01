@@ -39,6 +39,7 @@ dependencies:
   gap: ^3.0.1
   carousel_slider: ^4.2.1
   lottie: ^2.6.0
+  fl_chart: ^0.63.0
 
 dev_dependencies:
   flutter_test:
